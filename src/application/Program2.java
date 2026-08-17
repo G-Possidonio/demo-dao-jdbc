@@ -28,6 +28,13 @@ public class Program2 {
 		for (Department obj : list) {
 			System.out.println(obj);
 		}
+
+		System.out.println();
+		
+		System.out.println("===== TEST 3: department insert =====");
+		dep = new Department(null, "Agronomy");
+		departmentDao.insert(dep);
+		System.out.println("Inserted! New id = " + dep.getId());
 		
 		sc.close();
 	}
