@@ -46,12 +46,26 @@ public class Program2 {
 		
 		System.out.println();
 		
-		System.out.println("===== TEST 4: department delete =====");
+		System.out.println("===== TEST 5: department delete =====");
 		System.out.println("Enter id for delete test: ");
 		int id = sc.nextInt();
 		departmentDao.deleteById(id);
 		System.out.println("Delete completed");		
-		sc.close();
-	}
 
+        System.out.println();
+
+        System.out.println("===== TEST 6: department delete - integrity test =====");
+        System.out.println("Enter id for integrity test: ");
+        id = sc.nextInt();
+  	  	try {
+            departmentDao.deleteById(id);
+            System.out.println("Delete completed");
+        }
+        catch (DbIntegrityException e) {
+			System.out.println("Integrity error! The department cannot be deleted.");
+		}
+		catch (DbException e) {
+    		System.out.println("Database error: " + e.getMessage());
+	        sc.close();
+		}
 }
